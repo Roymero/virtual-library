@@ -1,5 +1,62 @@
 *{
     margin: 0;
     padding: 0;
+    font-family: 'Poppins','Roboto', 'Source Sans Pro', sans-serif;
+
+}
+
+
+body{
+    background-color: #121212;
+}
+
+.header{
+
+    min-height: 8vh;
+    width: 100%;
+    color: #E6E6E6;
+    background-color: #363636;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+}
+
+.logIn{
     
+
+    color: #E6E6E6;
+    font-weight: bold;
+    border-radius: 16px;
+    height: 2.5rem;
+    width: 4.5rem;
+    border: none;
+    background-color: #03DAC6;
+}
+
+.logIn:hover{
+
+    color: #121212;
+}
+
+.logo{
+
+    height: 3.5rem;
+    width: 3.5rem;
+    border-radius: 50%;
+    margin-right: 1rem;
+
+}
+
+.leftHeader{
+
+    display: flex;
+    padding: 1rem;
+    
+    
+}
+
+.leftHeader > h1{
+
+    margin-top: 0.3rem;
 }
