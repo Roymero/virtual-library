@@ -18,7 +18,7 @@
         <button class="btn logIn">Log In</button>
     </header>
     <main class="mainContainer">
-        <button class="btn addButton">+ Add Book</button>
+        <button class="btn addButton" id="addBookButton">+ Add Book</button>
         <div class="book-grid" id="bookGrid">
             <div class="book-card">
                 <p>"Book of Dini"</p>
@@ -51,18 +51,20 @@
         </div>
     </main>
     <div class="modal" id="bookModal">
-        <div class="addBookForm">
+        <form class="addBookForm">
             <p>Add New Book</p>
+            
             <input id="title" type="text" class="title bookInput" placeholder="Title" required maxlength="100">
             <input id="author" type="text" class="author bookInput" placeholder="Author" required maxlength="100">
             <input id="pages" type="number" class="pages bookInput" placeholder="Pages" required maxlength="10000">
             <div class="checkContainer">
-                <p>Have you read it?</p>
+                <label for="checkContainer">Have you read it?</label>
                 <input id="read" type="checkbox" class="isRead">
             </div>
-            <button class="btn submit">Submit</button>
-        </div>
+            <button class="btn submit" type="submit" id="submitButton">Submit</button>
+        </form>
     </div>
+    <div id="overlay" class="overlay"></div>
     
 </body>
 </html>
