@@ -1,6 +1,7 @@
 *{
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
     font-family: 'Poppins','Roboto', 'Source Sans Pro', sans-serif;
 
 }
@@ -24,19 +25,28 @@ body{
 
 .logIn{
     
-
-    color: #E6E6E6;
-    font-weight: bold;
-    border-radius: 16px;
     height: 2.5rem;
     width: 4.5rem;
-    border: none;
     background-color: #03DAC6;
+    border-radius: 16px;
+    margin: 0;
+    padding: 0;
 }
+
+
+.btn{
+
+    color: #121212;
+    font-weight: bold;
+    border: none;
+
+}
+
+
 
 .logIn:hover{
 
-    color: #121212;
+    color: #E6E6E6;
 }
 
 .logo{
@@ -53,10 +63,113 @@ body{
     display: flex;
     padding: 1rem;
     
+ 
+    
     
 }
 
 .leftHeader > h1{
 
     margin-top: 0.3rem;
+}
+
+.mainContainer{
+    
+    padding: 20px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+
+.addButton{
+
+    background-color: #03DAC6;
+    color: #121212;
+    font-size: 20px;
+    padding: 10px 15px;
+    border-radius: 24px;
+    margin-top: 20px;
+    
+}
+
+.addButton:hover{
+
+    color: #E6E6E6;
+    
+}
+
+.modal{
+
+    position: fixed;
+    z-index: 1;
+    top: 50%;
+    left: 50%;
+    width: 300px;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    background-color: gray;
+    transform: translate(-50%, -50%) scale(0);
+    transition: 0.2s ease-in-out;
+
+}
+
+.modal.active{
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.addBookForm{
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.addBookForm > p {
+
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.bookInput{
+
+    border-radius: 8px;
+    border-style: none;
+    width: 100%;
+    padding: 20px;
+    height: 3rem;
+
+}
+
+.bookInput:focus{
+
+    outline: none;
+}
+
+.bookInput::placeholder{
+
+    font-size: 18px;
+}
+
+.checkContainer{
+
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.submit{
+
+    font-size: 16px;
+    width: 80%;
+    height: 2.5rem;
+    border-radius: 8px;
+    background-color: #9fff9c;
+
+}
+
+.submit:hover{
+
+    filter: brightness(90%);
 }

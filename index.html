@@ -15,8 +15,24 @@
             <img class="logo" src="./images/dini2.png" alt="logo">
             <h1>Houdini's Library</h1>
         </div>
-        <button class="logIn">Log In</button>
+        <button class="btn logIn">Log In</button>
     </header>
+    <main class="mainContainer">
+        <button class="btn addButton">+ Add Book</button>
+    </main>
+    <div class="modal active" id="bookModal">
+        <div class="addBookForm">
+            <p>Add New Book</p>
+            <input id="title" type="text" class="title bookInput" placeholder="Title" required maxlength="100">
+            <input id="author" type="text" class="author bookInput" placeholder="Author" required maxlength="100">
+            <input id="pages" type="number" class="pages bookInput" placeholder="Pages" required maxlength="10000">
+            <div class="checkContainer">
+                <p>Have you read it?</p>
+                <input id="read" type="checkbox" class="isRead">
+            </div>
+            <button class="btn submit">Submit</button>
+        </div>
+    </div>
     
 </body>
 </html>
