@@ -20,29 +20,29 @@
     <main class="mainContainer">
         <button class="btn addButton" id="addBookButton">+ Add Book</button>
         <div class="book-grid" id="bookGrid">
-            <div class="book-card">
+            <div class="book-card" id="bookCard">
                 <p>"Book of Dini"</p>
                 <p>Roy</p>
                 <p>420</p>
-                <div class="card-buttons">
+                <div class="card-buttons" id="bookButtons">
                     <button class="btn notRead">Not Read</button>
                     <button class="btn remove">Remove</button>
                 </div>
             </div>
-            <div class="book-card">
+            <div class="book-card"  id="bookCard">
                 <p>"Book of Dini"</p>
                 <p>Roy</p>
                 <p>420</p>
-                <div class="card-buttons">
+                <div class="card-buttons" id="bookButtons">
                     <button class="btn notRead">Not Read</button>
                     <button class="btn remove">Remove</button>
                 </div>
             </div>
-            <div class="book-card">
+            <div class="book-card" id="bookCard">
                 <p>"Book of Dini"</p>
                 <p>Roy</p>
                 <p>420</p>
-                <div class="card-buttons">
+                <div class="card-buttons" id="bookButtons">
                     <button class="btn notRead">Not Read</button>
                     <button class="btn remove">Remove</button>
                 </div>
@@ -51,9 +51,9 @@
         </div>
     </main>
     <div class="modal" id="bookModal">
-        <form class="addBookForm">
+        <form class="addBookForm" id="bookForm">
             <p>Add New Book</p>
-            
+
             <input id="title" type="text" class="title bookInput" placeholder="Title" required maxlength="100">
             <input id="author" type="text" class="author bookInput" placeholder="Author" required maxlength="100">
             <input id="pages" type="number" class="pages bookInput" placeholder="Pages" required maxlength="10000">
