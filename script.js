@@ -33,6 +33,7 @@ const overlay = document.getElementById('overlay');
 
 const bookForm = document.getElementById('bookForm');
 const bookGrid = document.getElementById('bookGrid');
+const exitButton = document.getElementById('exitButton');
 
 
 function setStartingIndex(number){
@@ -56,6 +57,7 @@ function addNewBook(){
     let newTitle;
     let newAuthor;
     let newPages;
+    let readCheck;
     let doubleCheck;
     let errorMsg;
 
@@ -63,8 +65,10 @@ function addNewBook(){
     newTitle = document.getElementById('title').value;
     newAuthor = document.getElementById('author').value;
     newPages = document.getElementById('pages').value;
+   
     errorMsg = document.getElementById('errorMsg');
 
+   
     doubleCheck = checkForBook(newTitle);
     console.log(doubleCheck);
 
@@ -112,8 +116,7 @@ function createBookCard(title, author, pages){
     const innerCardButtons = document.createElement('div');
     const innerCardRead = document.createElement('button');
     const innerCardRemove = document.createElement('button');
-
-    const readButton = document.getElementById('readButton');
+    
 
 
     
@@ -218,7 +221,6 @@ function checkForBook(title) {
         }
     }
 
-
     return false
 
 }
@@ -233,6 +235,7 @@ document.addEventListener('click', function(e){
             e.target.classList.remove('notRead');
             e.target.classList.add('read');
             e.target.textContent = "Read";
+            
 
         }
         else if (e.target.classList.contains('read')) {
@@ -259,7 +262,14 @@ addBookButton.addEventListener("click", ()=>{
 });
 
 
+exitButton.addEventListener("click", ()=>{
 
+    event.preventDefault();
+    removeModal();
+    reset();
+
+
+})
 
 bookForm.addEventListener("submit", ()=>{
 
@@ -274,6 +284,7 @@ bookForm.addEventListener("submit", ()=>{
 
 
 });
+
 
 const spellBook = new book("Houdini's Spellbook", "Houdini", "300", false);
 

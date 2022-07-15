@@ -26,8 +26,10 @@
     </main>
     <div class="modal" id="bookModal">
         <form class="addBookForm" id="bookForm">
+            <div class="topMod">
             <p>Add New Book</p>
-
+            <button class="exit" id="exitButton">x</button>
+            </div>
             <input id="title" type="text" class="title bookInput" placeholder="Title" required maxlength="100">
             <p class="errorMessage" id="errorMsg"></p>
             <input id="author" type="text" class="author bookInput" placeholder="Author" required maxlength="100">

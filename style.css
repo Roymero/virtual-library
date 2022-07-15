@@ -236,10 +236,44 @@ body{
     gap: 20px;
 }
 
-.addBookForm > p {
+.topMod{
+
+    display: flex;
+    flex-direction: row;
+    width: 18rem;
+    justify-content: space-around;
+    
+
+
+}
+
+.topMod > p {
 
     font-size: 20px;
     font-weight: bold;
+    margin-left: 3.5rem;
+
+}
+
+.exit{
+
+
+    border-radius: 50%;
+    width: 1.5rem;
+    height: 1.5rem;
+    border: none;
+    background-color: #03DAC6;
+    font-size: 0.8rem;
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+    
+}
+
+
+.exit:hover{
+
+    color: #E6E6E6;
 
 }
 
@@ -269,6 +303,8 @@ body{
     align-items: center;
     gap: 8px;
 }
+
+
 
 .submit{
 
