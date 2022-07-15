@@ -5,11 +5,12 @@ var currentTitle;
 var currentAuthor;
 var currentPages;
 var hasRead;
+var startingIndex;
 
 // library to keep all books in
 var library = [];
 
-var libraryLength;
+
 
 
 function book(title, author, pages, read){
@@ -34,34 +35,159 @@ const bookModal = document.getElementById('bookModal');
 const submitButton = document.getElementById('submitButton');
 const overlay = document.getElementById('overlay');
 
+
+
+
 const bookForm = document.getElementById('bookForm');
+
+
+
+
+
+
+
 const bookGrid = document.getElementById('bookGrid');
 
 
 
 function addNewBook(){
 
-    console.log("works");
+
+    let newTitle;
+    let newAuthor;
+    let newPages;
+
+
+    newTitle = document.getElementById('title').value;
+    newAuthor = document.getElementById('author').value;
+    newPages = document.getElementById('pages').value;
+
+    const newBook = new book(newTitle, newAuthor, newPages, false);
+
+    library.push(newBook);
+
+    if(library.length == 0){
+        startingIndex = 0;
+
+    }
+    else{
+
+        startingIndex = library.length - 1;
+    }
+
+   
+
+}
+
+
+function createBookCard(title, author, pages){
+
 
     const newCard = document.createElement("div");
     const innerCardTitle = document.createElement('p');
     const innerCardAuthor = document.createElement('p');
     const innerCardPages = document.createElement('p');
+    const innerCardButtons = document.createElement('div');
+    const innerCardRead = document.createElement('button')
+    const innerCardRemove = document.createElement('button')
+    
+    
+
 
     bookGrid.appendChild(newCard);
     newCard.classList.add('book-card')
 
-    innerCardTitle.textContent = '"Book of Houdini"';
-    innerCardAuthor.textContent = 'Roy';
-    innerCardPages.textContent = '420';
+
+   /* currentTitle = document.getElementById('title').value;
+    currentAuthor = document.getElementById('author').value;
+    currentPages =  document.getElementById('pages').value; */
+
+    innerCardTitle.textContent = '"' + title + '"';
+    innerCardAuthor.textContent = author;
+    innerCardPages.textContent = pages;
+
+
+
+
+    newCard.appendChild(innerCardTitle);
+    newCard.appendChild(innerCardAuthor);
+    newCard.appendChild(innerCardPages);
+
+
+    
+
+    innerCardButtons.classList.add('card-buttons')
+    innerCardButtons.setAttribute("id", "bookButtons")
+    newCard.appendChild(innerCardButtons);
+    
+    innerCardRead.classList.add('btn');
+    innerCardRead.classList.add('notRead');
+    innerCardRead.setAttribute("id","readButton")
+    innerCardRead.textContent = "Not Read";
+
+    
+
+
+    innerCardRemove.classList.add('btn');
+    innerCardRemove.classList.add('remove');
+    innerCardRemove.setAttribute("id","removeButton")
+    innerCardRemove.textContent = "Remove";
+
+
+    innerCardButtons.appendChild(innerCardRead);
+    innerCardButtons.appendChild(innerCardRemove);
+
+    
+
+
+}
+
+
+function displayLibrary(){
+
+
+for(let i = startingIndex; i < library.length; i++){
+
+    currentTitle = library[i].title;
+    currentAuthor = library[i].author;
+    currentPages = library[i].pages;
+
+    createBookCard(currentTitle, currentAuthor, currentPages);
+
+}
+
+}
+
+function swapRead(){
+
+    const readButton = document.getElementById('readButton');
+
+
 
 
 }
 
 function removeModal(){
+    
     overlay.classList.remove('active');
     bookModal.classList.remove('active');
 }
+
+
+document.addEventListener('click', function(e){
+
+   if(e.target && e.target.id == "readButton"){
+    
+    const readButton = document.getElementById('readButton');
+    readButton.classList.remove('notRead');
+    readButton.classList.add('read'); 
+
+    }
+
+
+
+});
+
 
 addBookButton.addEventListener("click", ()=>{
 
@@ -76,12 +202,38 @@ addBookButton.addEventListener("click", ()=>{
 
 bookForm.addEventListener("submit", ()=>{
 
+    
+
     event.preventDefault();
     addNewBook();
     removeModal();
+    displayLibrary();
     
 
 
 });
 
+const spellBook = new book("Houdini's Spellbook", "Houdini", "300", false);
+
+const theDuddy = new book("The Book of Duddy", "Roi", "1000", false)
+
+const theDini = new book("The Book of Dini", "Roy", "420", false)
+
+library.push(spellBook);
+library.push(theDuddy);
+library.push(theDini);
+
+
+
 // For Loop to display books
+
+for(let i = 0; i < library.length; i++){
+
+    currentTitle = library[i].title;
+    currentAuthor = library[i].author;
+    currentPages = library[i].pages;
+
+    createBookCard(currentTitle, currentAuthor, currentPages);
+
+}
+

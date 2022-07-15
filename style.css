@@ -175,8 +175,24 @@ body{
 
 }
 
-
 .notRead:hover{
+
+    filter: brightness(80%);
+}
+
+.read{
+
+
+    background-color: #9fff9c;
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-size: 20px;
+    font-weight: normal;
+
+}
+
+
+.read:hover{
 
     filter: brightness(80%);
 }
