@@ -31,13 +31,24 @@ const bookModal = document.getElementById('bookModal');
 const submitButton = document.getElementById('submitButton');
 const overlay = document.getElementById('overlay');
 
-
-
-
 const bookForm = document.getElementById('bookForm');
 const bookGrid = document.getElementById('bookGrid');
 
 
+function setStartingIndex(number){
+
+    if(library.length == 0){
+        startingIndex = 0;
+
+    }
+    else{
+
+        startingIndex = number
+    }
+
+
+
+}
 
 function addNewBook(){
 
@@ -62,9 +73,8 @@ function addNewBook(){
 
     errorMsg.classList.add('active');
     errorMsg.textContent = "This book already exist in your library";
-    
+    setStartingIndex(library.length);
 
-    
     return;
     
 
@@ -75,22 +85,11 @@ function addNewBook(){
     library.push(newBook);
     removeModal();
     reset();
-
-
+    errorMsg.classList.remove('active');
+    errorMsg.textContent = "";
+    setStartingIndex(library.length - 1);
+    
    }
-
-    if(library.length == 0){
-        startingIndex = 0;
-
-    }
-    else{
-
-        startingIndex = library.length - 1;
-    }
-
-
-
-   
 
 }
 
@@ -177,6 +176,8 @@ for(let i = startingIndex; i < library.length; i++){
     currentTitle = library[i].title;
     currentAuthor = library[i].author;
     currentPages = library[i].pages;
+
+
 
     createBookCard(currentTitle, currentAuthor, currentPages);
 
