@@ -22,11 +22,7 @@ function book(title, author, pages, read){
   
 }
 
-function openModal(){
 
-
-
-}
 
 
 
@@ -39,13 +35,6 @@ const overlay = document.getElementById('overlay');
 
 
 const bookForm = document.getElementById('bookForm');
-
-
-
-
-
-
-
 const bookGrid = document.getElementById('bookGrid');
 
 
@@ -56,15 +45,39 @@ function addNewBook(){
     let newTitle;
     let newAuthor;
     let newPages;
+    let doubleCheck;
+    let errorMsg;
 
 
     newTitle = document.getElementById('title').value;
     newAuthor = document.getElementById('author').value;
     newPages = document.getElementById('pages').value;
+    errorMsg = document.getElementById('errorMsg');
+
+    doubleCheck = checkForBook(newTitle);
+    console.log(doubleCheck);
+
+
+   if (doubleCheck == true){
+
+    errorMsg.classList.add('active');
+    errorMsg.textContent = "This book already exist in your library";
+    
+
+    
+    return;
+    
+
+   }
+   else if(doubleCheck == false){
 
     const newBook = new book(newTitle, newAuthor, newPages, false);
-
     library.push(newBook);
+    removeModal();
+    reset();
+
+
+   }
 
     if(library.length == 0){
         startingIndex = 0;
@@ -75,7 +88,17 @@ function addNewBook(){
         startingIndex = library.length - 1;
     }
 
+
+
    
+
+}
+
+function reset(){
+
+    document.getElementById('title').value = "";
+    document.getElementById('author').value = "";
+    document.getElementById('pages').value = "";
 
 }
 
@@ -88,8 +111,12 @@ function createBookCard(title, author, pages){
     const innerCardAuthor = document.createElement('p');
     const innerCardPages = document.createElement('p');
     const innerCardButtons = document.createElement('div');
-    const innerCardRead = document.createElement('button')
-    const innerCardRemove = document.createElement('button')
+    const innerCardRead = document.createElement('button');
+    const innerCardRemove = document.createElement('button');
+
+    const readButton = document.getElementById('readButton');
+
+
     
     
 
@@ -137,7 +164,6 @@ function createBookCard(title, author, pages){
     innerCardButtons.appendChild(innerCardRead);
     innerCardButtons.appendChild(innerCardRemove);
 
-    
 
 
 }
@@ -161,6 +187,7 @@ for(let i = startingIndex; i < library.length; i++){
 function swapRead(){
 
     const readButton = document.getElementById('readButton');
+    
 
 
 
@@ -171,22 +198,55 @@ function removeModal(){
     
     overlay.classList.remove('active');
     bookModal.classList.remove('active');
+
+}
+
+function checkForBook(title) {
+
+    if (library.length == 0) {
+
+        return false
+    }
+    else {
+        for (let i = 0; i < library.length; i++) {
+
+            if (title == library[i].title) {
+                return true;
+            }
+
+        }
+    }
+
+
+    return false
+
 }
 
 
 document.addEventListener('click', function(e){
 
-   if(e.target && e.target.id == "readButton"){
-    
-    const readButton = document.getElementById('readButton');
-    readButton.classList.remove('notRead');
-    readButton.classList.add('read'); 
+    if (e.target && e.target.id == "readButton") {
 
+        if (e.target.classList.contains('notRead')) {
+
+            e.target.classList.remove('notRead');
+            e.target.classList.add('read');
+            e.target.textContent = "Read";
+
+        }
+        else if (e.target.classList.contains('read')) {
+
+            e.target.classList.remove('read');
+            e.target.classList.add('notRead');
+            e.target.textContent = "Not Read";
+
+        }
     }
 
-
-
 });
+
+
+
 
 
 addBookButton.addEventListener("click", ()=>{
@@ -206,8 +266,9 @@ bookForm.addEventListener("submit", ()=>{
 
     event.preventDefault();
     addNewBook();
-    removeModal();
     displayLibrary();
+    console.log(library);
+  
     
 
 

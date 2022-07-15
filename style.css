@@ -153,6 +153,18 @@ body{
 
 }
 
+.errorMessage{
+
+    display: none;
+}
+
+.errorMessage.active{
+
+    color: red;
+    display: block;
+    margin-top: -15px;
+}
+
 
 .card-buttons{
 
